@@ -48,22 +48,28 @@ function padOne(num, digits) {
   return Array(Math.max(digits - String(num).length + 1, 0)).join(1) + num;
 }
 
+function replaceAt(index, replacement) {
+  if (index >= this.length) {
+    return this.valueOf();
+  }
+
+  return this.substring(0, index) + replacement + this.substring(index + 1);
+}
+
 function get2sComplement(M) {
   let lenM = M.length;
-  let isOne = 1;
+  let isOne = true;
+
   for (var i = lenM - 1; i > -1; i--) {
     let temp = parseInt(M.charAt(i));
 
-    console.log(temp);
-    if (isOne == 0) {
-      M[i] = (1 - temp).toString();
-      console.log(i + ") 1 - " + temp + " = " + M.charAt(i));
+    if (!isOne) {
+      console.log((1 - temp).toString());
+      M = M.replaceAt(i, (1 - temp).toString()); //TODO: Update the character in a string.
     }
 
-    if (temp[i] ) {
-      console.log("Int");
-      isOne = 0;
-      
+    if (temp == 1) {
+      isOne = false;
     }
     console.log("After: " + M);
   }
