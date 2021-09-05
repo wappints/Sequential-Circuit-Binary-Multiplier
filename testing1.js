@@ -96,11 +96,48 @@ function padOne(num, digits) {
 // Parameter: str, string; index to be replaced, character to be replaced.
 // Returns: updated string.
 function replaceAtIndex(str, index, char) {
+
+    
   console.log("String: " + str + "  Index: " + index + " Char:" + char);
+
   if (index > str.length - 1) {
     return str;
   } else {
-    return str.substring(0, index) + char + str.substring(index + 1);
+
+    
+    cnt = 0;
+    flag = 0;
+
+    x = str.substring(0, index) + char + str.substring(index + 1);
+    
+    for (i = 0; i < x.length; i++)
+    {
+      if (x[i] == '2')
+      {
+        x = x.substring(0, i) + '0' + x.substring(i + 1);
+        i = x.length
+        flag = 1;
+      }
+        
+      else
+        cnt++;
+    }
+    
+    if (flag == 1)
+    {
+    for (i = cnt-1; i >= 0; i--)
+    {
+      
+      if (x[i] == '1')
+        x = x.substring(0, i) + '0' + x.substring(i + 1);
+      else if (x[i] == '0')
+      {
+        x = x.substring(0, i) + '1' + x.substring(i + 1);
+        i = 0;
+      }
+    }
+  }
+    return x;
   }
 }
 
@@ -141,11 +178,7 @@ function compare(tempString) {
     else {
       for (let i = 0; i < A.length; i++) {
         console.log("A-M");
-        tempString = replaceAtIndex(
-          tempString,
-          i,
-          (parseInt(tempString[i]) + parseInt(negM[i])).toString()
-        );
+        tempString = replaceAtIndex(tempString,i,(parseInt(tempString[i]) + parseInt(negM[i])).toString());
       }
     }
   } else {
@@ -157,11 +190,7 @@ function compare(tempString) {
     else {
       for (let i = 0; i < A.length; i++) {
         console.log("A+M");
-        tempString = replaceAtIndex(
-          tempString,
-          i,
-          (parseInt(tempString[i]) + parseInt(M[i])).toString()
-        );
+        tempString = replaceAtIndex(tempString,i,(parseInt(tempString[i]) + parseInt(M[i])).toString());
       }
     }
   }
