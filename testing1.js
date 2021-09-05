@@ -1,5 +1,4 @@
 // Sequential Circuit Binary Multiplier
-// TODO: Fix the compare() na, pag inadd hindi siya add lang since binary.
 // TODO: Add validator for MAX of 16-bit length yung multiplier and multiplicand.
 // TODO: Input: binary (use minimum number of bits; max up to 16-bit)
 // TODO: Output: Option to show either step-by-step or “all” mode of the A and Q output after every step with option to output result in TEXT FILE.
@@ -98,7 +97,7 @@ function padOne(num, digits) {
 function replaceAtIndex(str, index, char) {
 
     
-  console.log("String: " + str + "  Index: " + index + " Char:" + char);
+console.log("String: " + str + "  Index: " + index + " Char:" + char);
 
   if (index > str.length - 1) {
     return str;
@@ -162,7 +161,6 @@ function get2sComplement(M) {
   return M;
 }
 
-// TODO: Fix the values when adding the binaries.
 // This function checks the last digit of Q and Q-1
 // Parameter: tempString, the concatinated string.
 // Returns: tempString.
