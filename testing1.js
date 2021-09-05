@@ -58,6 +58,7 @@ function checkLength() {
       } else {
         M = padOne(M, lenQ);
       }
+      
     } else {
       if (Q[0] == "0") {
         Q = padZero(Q, lenM);
